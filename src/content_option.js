@@ -20,7 +20,7 @@ export const introdata = {
     </p>
   ),
   images: [
-    "/Rajnish_pic.png", // first image for Home
-    "/Raj_pic.png", // second image for About
+    `${process.env.PUBLIC_URL}/Rajnish_pic.png`,
+    `${process.env.PUBLIC_URL}/raj_pic.png`,
   ],
 };

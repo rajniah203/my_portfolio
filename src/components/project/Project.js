@@ -5,8 +5,8 @@ const projectList = [
   {
     title: "Portfolio Website",
     description: "Personal portfolio built with React and CSS.",
-    image: process.env.PUBLIC_URL + "/project1.jpg",
-    link: "https://github.com/rajniah203/my-portfolio",
+    image: process.env.PUBLIC_URL + "/portfolio_pic.png",
+    link: "https://rajniah203.github.io/my_portfolio",
   },
   {
     title: ".NET Web App",
@@ -17,8 +17,8 @@ const projectList = [
   {
     title: "E-Commerce App",
     description: "Full-stack e-commerce platform with .NET backend.",
-    image: process.env.PUBLIC_URL + "/project3.jpg",
-    link: "#",
+    image: process.env.PUBLIC_URL + "/Mahesham_pic .png",
+    link: "https://dev.mahesham.com/",
   },
 ];
 
