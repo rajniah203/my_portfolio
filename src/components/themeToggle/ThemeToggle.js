@@ -4,11 +4,15 @@ import "./ThemeToggle.css";
 
 function ThemeToggle() {
   const [theme, setTheme] = useState("light");
+  const [animate, setAnimate] = useState(false);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
+    setAnimate(true);
     document.documentElement.setAttribute("data-theme", newTheme);
+
+    setTimeout(() => setAnimate(false), 400);
   };
 
   useEffect(() => {
@@ -22,7 +26,15 @@ function ThemeToggle() {
   }, [theme]);
 
   return (
-    <button className="theme-toggle" onClick={toggleTheme}>
+    <button
+      className={`theme-toggle ${animate ? "animate" : ""}`}
+      onClick={toggleTheme}
+      aria-label="Toggle theme"
+    >
+      <span className="tooltip">
+        {theme === "light" ? "Dark mode" : "Light mode"}
+      </span>
+
       {theme === "light" ? <FaMoon /> : <FaSun />}
     </button>
   );

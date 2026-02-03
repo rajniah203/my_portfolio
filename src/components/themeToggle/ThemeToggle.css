@@ -1,17 +1,110 @@
-/* ThemeToggle.css */
 .theme-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--btn-bg, #ff007a);
-  color: #fff;
-  border: none;
-  padding: 10px;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10001;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 50%;
+  border: none;
   cursor: pointer;
-  z-index: 1000;
-  transition: all 0.3s ease;
+
+  font-size: 1.15rem;
+  color: #fff;
+
+  background: linear-gradient(135deg, #00ffd5, #ee0979);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
 }
+
+/* Hover */
 .theme-toggle:hover {
-  transform: scale(1.2);
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+}
+
+/* Click */
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Icon rotate animation */
+.theme-toggle.animate svg {
+  animation: rotateIcon 0.4s ease;
+}
+
+@keyframes rotateIcon {
+  from {
+    transform: rotate(0deg) scale(0.8);
+  }
+  to {
+    transform: rotate(180deg) scale(1);
+  }
+}
+
+/* Ripple effect */
+.theme-toggle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+}
+
+.theme-toggle.animate::after {
+  animation: ripple 0.45s ease;
+}
+
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Tooltip */
+.theme-toggle .tooltip {
+  position: absolute;
+  bottom: 60px;
+  right: 50%;
+  transform: translateX(50%);
+
+  background: #111;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover .tooltip {
+  opacity: 1;
+  transform: translateX(50%) translateY(-4px);
+}
+
+/* Theme-based gradient */
+:root[data-theme="light"] .theme-toggle {
+  background: linear-gradient(135deg, #ee0979, #ff6a00);
+}
+
+:root[data-theme="dark"] .theme-toggle {
+  background: linear-gradient(135deg, #00ffd5, #0f2027);
 }

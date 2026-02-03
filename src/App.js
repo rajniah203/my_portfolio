@@ -13,11 +13,27 @@ function App() {
     <>
       <ThemeToggle />
       <Navbar />
-      <Home />
-      <About />
-      <SkillsPage />
-      <Project />
-      <Contact />
+
+      <section id="home">
+        <Home />
+      </section>
+
+      <section id="about">
+        <About />
+      </section>
+
+      <section id="skills">
+        <SkillsPage />
+      </section>
+
+      <section id="projects">
+        <Project />
+      </section>
+
+      <section id="contact">
+        <Contact />
+      </section>
+
       <Footer />
     </>
   );

@@ -1,190 +1,252 @@
-/* ---------------- Base Layout ---------------- */
-.home-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;800&family=Outfit:wght@400;900&display=swap');
+
+:root {
+  --primary: #00f2fe;
+  --secondary: #ee0979;
+  --dark-base: #020617;
+}
+
+/* ===============================
+   HERO SECTION
+================================ */
+.cyber-hero {
+  position: relative;
   min-height: 100vh;
-  width: 100%;
-  color: white;
-  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 242, 254, 0.12),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(238, 9, 121, 0.12),
+      transparent 45%
+    ),
+    linear-gradient(135deg, #020617, #030712);
 
-  background: linear-gradient(270deg, #ff6a00, #ee0979, #00bcd4, #0f2027);
-  background-size: 800% 800%;
-  animation: gradientShift 15s ease infinite;
-  padding: 0 20px; /* safe side padding for small screens */
-}
-
-/* Animated gradient background */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Content Flex Wrapper */
-.home-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap; /* ensures wrapping on smaller screens */
-  width: 100%;
-  max-width: 1200px;
-  gap: 40px;
-}
-
-/* ---------------- Text Section ---------------- */
-.home-text {
-  flex: 1 1 500px;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  animation: fadeInUp 1s forwards;
-  padding: 10px;
+  color: white;
+  overflow: hidden;
+  padding: 60px 5%;
 }
 
-.home-text h1 {
-  font-size: 3rem;
-  color: #00bcd4;
-  margin-bottom: 10px;
+/* ===============================
+   BACKGROUND FX
+================================ */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
 }
 
-.home-text h2 {
+.light-beams {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(238, 9, 121, 0.12), transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(0, 242, 254, 0.12), transparent 40%);
+}
+
+/* ===============================
+   CONTENT
+================================ */
+.hero-wrapper {
+  width: 100%;
+  max-width: 1300px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-main-content {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 60px;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.system-text {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--primary);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+}
+
+.glitch-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 15px 0;
+}
+
+.role-container {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1.5rem;
-  color: #e0e0e0;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--secondary);
 }
 
-.home-text p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin-bottom: 30px;
+.hero-description {
+  max-width: 520px;
+  margin: 30px 0;
+  color: #94a3b8;
+  line-height: 1.8;
 }
 
-/* ---------------- Buttons ---------------- */
-.home-buttons {
+/* ===============================
+   BUTTONS
+================================ */
+.action-hub {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
-.btn {
-  padding: 10px 25px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
+.btn-cyber {
+  padding: 16px 36px;
+  font-weight: 800;
+  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
 }
 
-.btn-primary {
-  background-color: #00bcd4;
+.btn-cyber.primary {
+  background: var(--primary);
+  color: #000;
+}
+
+.btn-cyber.outline {
+  background: transparent;
+  border: 1px solid var(--primary);
   color: white;
 }
 
-.btn-primary:hover {
-  background-color: #019cae;
+.btn-cyber:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--primary);
 }
 
-.btn-outline {
-  border: 2px solid #00bcd4;
-  color: #00bcd4;
+/* ===============================
+   RIGHT IMAGE PORTAL
+================================ */
+.hero-right {
+  flex: 1;
 }
 
-.btn-outline:hover {
-  background-color: #00bcd4;
-  color: white;
+.image-portal {
+  position: relative;
+  width: 450px;
+  height: 550px;
+  margin: auto;
 }
 
-/* ---------------- Image Section ---------------- */
-.home-image {
-  flex: 1 1 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeInRight 1s forwards;
-  animation-delay: 0.5s;
-}
-
-.home-image img {
+.main-image-frame {
   width: 100%;
-  max-width: 500px;
-  height: auto;
-  object-fit: cover;
+  height: 100%;
   border-radius: 20px;
-  box-shadow: 0 0 25px rgba(0, 188, 212, 0.3);
-  transition: transform 0.3s ease;
+  overflow: hidden;
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  position: relative;
 }
 
-.home-image img:hover {
-  transform: scale(1.03);
+.main-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
 }
 
-/* ---------------- Animations ---------------- */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.scan-line {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+  animation: scan 4s linear infinite;
 }
 
-@keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+@keyframes scan {
+  from { top: 0; }
+  to { top: 100%; }
 }
 
-/* ---------------- Responsive Design ---------------- */
+.portal-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  transform: translate(-50%, -50%);
+  animation: spin 12s linear infinite;
+}
 
-/* Tablets (768px – 1024px) */
+.ring-1 { width: 600px; height: 600px; border-style: dashed; }
+.ring-2 { width: 500px; height: 500px; animation-duration: 18s; }
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ===============================
+   STATS
+================================ */
+.hero-stats-bar {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 30px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #64748b;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 50px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 1024px) {
-  .home-content {
-    flex-direction: column-reverse;
-    align-items: center;
+  .hero-main-content {
+    flex-direction: column;
     text-align: center;
   }
-
-  .home-image img {
-    max-width: 400px;
-    margin-bottom: 20px;
+  .image-portal {
+    width: 300px;
+    height: 400px;
   }
-
-  .home-text h1 {
-    font-size: 2.4rem;
-  }
-
-  .home-text h2 {
-    font-size: 1.3rem;
-  }
-
-  .home-text p {
-    font-size: 1rem;
-  }
-}
-
-/* Mobile (below 768px) */
-@media (max-width: 768px) {
-  .home-container {
-    padding: 60px 20px;
-  }
-
-  .home-content {
-    flex-direction: column-reverse;
-    text-align: center;
+  .hero-stats-bar {
+    flex-wrap: wrap;
     gap: 20px;
-  }
-
-  .home-text h1 {
-    font-size: 2rem;
-  }
-
-  .home-text h2 {
-    font-size: 1.1rem;
-  }
-
-  .home-text p {
-    font-size: 0.95rem;
-  }
-
-  .home-image img {
-    width: 90%;
-    max-width: 300px;
-    border-radius: 15px;
   }
 }
