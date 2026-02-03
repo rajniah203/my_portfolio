@@ -21,6 +21,6 @@ export const introdata = {
   ),
   images: [
     `${process.env.PUBLIC_URL}/Rajnish_pic.png`,
-    `${process.env.PUBLIC_URL}/raj_pic.png`,
+    `${process.env.PUBLIC_URL}/my_pic1.jpg`,
   ],
 };

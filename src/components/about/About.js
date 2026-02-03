@@ -20,7 +20,7 @@ function About() {
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/Resume_final.pdf"; // Access resume from public folder
+    link.href = "Rajnish-Resumse.pdf"; // Access resume from public folder
     link.download = "Rajnish_Kumar_Resume.pdf";
     link.click();
   };
